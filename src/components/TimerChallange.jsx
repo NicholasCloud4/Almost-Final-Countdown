@@ -12,8 +12,11 @@ export default function TimerChallange(props) {
 
     if (timeRemaining <= 0) {
         clearInterval(timer.current)
-        setTimeRemaing(props.targetTime * 1000)
         dialog.current.open()
+    }
+
+    function handleReset() {
+        setTimeRemaing(props.targetTime * 1000)
     }
 
     function handleStart() {
@@ -29,7 +32,7 @@ export default function TimerChallange(props) {
 
     return (
         <>
-            <ResultModal ref={dialog} targetTime={props.targetTime} result="lost" />
+            <ResultModal ref={dialog} targetTime={props.targetTime} remainingTime={timeRemaining} onReset={handleReset} />
             <section className="challenge">
                 <h2>{props.title}</h2>
                 <p className="challenge-time">
