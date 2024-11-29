@@ -14,7 +14,7 @@ export default function TimerChallange(props) {
 
         timer.current = setTimeout(() => {
             setTimerExpired(true);
-            dialog.current.showModal();
+            dialog.current.open();
         }, props.targetTime * 1000)
     }
 
